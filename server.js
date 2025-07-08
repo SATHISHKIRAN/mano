@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 10000;
 
 // Middleware
 app.use(cors());
@@ -121,6 +121,9 @@ app.post('/api/subscribe', async (req, res) => {
     console.error('Error sending subscription confirmation email:', error);
     res.status(500).json({ error: 'Failed to send confirmation email. Please try again later.' });
   }
+});
+app.get('/', (req, res) => {
+  res.send('✅ Backend API Server for Content.in is running!');
 });
 
 // Start the server
